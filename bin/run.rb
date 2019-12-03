@@ -1,4 +1,4 @@
-require_relative '../config/environment'
+require_relative '../config/environment.rb'
 
-app = nameOfYourApp.new
+app = MoodyTune.new
 app.run
