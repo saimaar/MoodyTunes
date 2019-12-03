@@ -1,9 +1,12 @@
 require 'pry'
+
 class MoodyTune
     # This is just reading @user in this class. 
     attr_reader :user
   # here will be your CLI!
   # it is not an AR class so you need to add attr
+
+
 
   def run
     welcome
@@ -32,14 +35,18 @@ class MoodyTune
       input = gets.chomp
       if input.downcase == 'yes'
           
-        fav_songs = Favsong.all.select do |songs|
-              songs.user_id == @user.id 
+        # This loops through the favsongs, and match favsong's user_id to @user.id(user class).
+        fav_songs = Favsong.all.select do |favsong|
+            # Returns favsong instances matching the user.
+              favsong.user_id == @user.id 
+        end 
+         binding.pry
+        fav_songs.map do |favsong|
+          # In order to get the songname, we need to go into the 
+          puts favsong.song.songname
         end 
 
-        puts fav_songs 
-
       end 
-               
   end
 
 end
