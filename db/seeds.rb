@@ -17,6 +17,16 @@ song7 = Song.create(songname: "Can't Stop The Feeling",artist:'Justin Timberlake
 song8 = Song.create(songname: 'Takeaway',artist:'Illenium',mood:'Happy',url:'https://www.youtube.com/watch?v=lzkKzZmRZk8&list=PLt8fcdovyojFGzjfDdtv70JK8CPqHiDZn&index=2',duration:'3:48')
 song9 = Song.create(songname: 'Nobody Compares to You',artist:'Gryffin',mood:'Happy',url:'https://www.youtube.com/watch?v=QjihRb2E-YA&list=PLt8fcdovyojFGzjfDdtv70JK8CPqHiDZn&index=5',duration:'3:51')
 song10 = Song.create(songname: 'Quiet Storm',artist:'Zomboy',mood:'Excited',url:'https://www.youtube.com/watch?v=mFrsPePOjn4',duration:'3:45')
+song11 = Song.create(songname: 'Miss atomic bomb',artist:'The Killers',mood:'romantic',url:'https://www.youtube.com/watch?v=oofSnsGkops',duration:'3:22')
+song12 = Song.create(songname: 'wake me up when september ends', artist:'Greenday', mood:'chill',url:'https://www.youtube.com/watch?v=43NIgVtixmc',duration:'3:22')
+song13 = Song.create(songname: 'November Rain',artist:'Guns & Roses',mood:'sad',url:'https://www.youtube.com/watch?v=sZfZ8uWaOFI',duration:'3:22')
+song14 = Song.create(songname: 'Happy',artist:'Pharrell Williams',mood:'Happy',url:'https://www.youtube.com/watch?v=QQcQDbpDH_o',duration:'3:22')
+song15 = Song.create(songname: 'Memories',artist:'Maroon 5',mood:'excited',url:'https://www.youtube.com/watch?v=oofSnsGkops',duration:'3:22')
+song16 = Song.create(songname: 'Cant take my eyes of you', artist:'Frankie Valli', mood:'romantic',url:'https://www.youtube.com/watch?v=oofSnsGkops',duration:'3:22')
+song17 = Song.create(songname: 'Lover',artist:'taylor swift',mood:'sad',url:'https://www.youtube.com/watch?v=43NIgVtixmc',duration:'3:22')
+song18 = Song.create(songname: 'Only Human',artist:'Jonas Brothers',mood:'chill',url:'https://www.youtube.com/watch?v=sZfZ8uWaOFI',duration:'3:22')
+song19 = Song.create(songname: 'Beautiful People',artist:'Ed Sheeran Featuring Khalid',mood:'excited',url:'https://www.youtube.com/watch?v=QQcQDbpDH_o',duration:'3:22')
+song20 = Song.create(songname: 'baby',artist:'Justin Beiber',mood:'happy',url:'https://www.youtube.com/watch?v=oofSnsGkops',duration:'3:22')
 
 
 favsong1 = Favsong.create(user_id: user1.id, song_id: song1.id)

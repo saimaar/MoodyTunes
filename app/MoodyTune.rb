@@ -55,25 +55,50 @@ class MoodyTune
     moods = ['Happy', 'Sad', 'Excited', 'Chill', 'Romantic']
     mood_choice = prompt.select("What is your mood today?",moods)
     matching_songs = Song.all.select do |each_song|
-           each_song.mood.downcase == mood_choice.downcase
-           
+           each_song.mood.downcase == mood_choice.downcase         
      end    
-      
     matching_songnames_artists =
         matching_songs.map do |song|
         # Returns song name and artist name. 
         "#{song.songname} by #{song.artist}."
     end 
-    display_songs(matching_songnames_artists)
-
- 
+    display_songs_and_choose(matching_songnames_artists)
 end  # End of ask_mood_and_show_songs
 
-def display_songs(songs)
-  songs.each_with_index do |song, index|
-    puts "#{index+1}. #{song}"
-  end 
-end 
+def display_songs_and_choose(songs)
+    prompt_songs = TTY::Prompt.new
+    sleep(1)
+    song_choice = prompt_songs.multi_select("Here are the songs matching your mood, please choose:",songs)
+    # song_choice_array = song_choice.split('!') # It is trying to find '!' to split, if not found then it split the whole sentnce.
+    # test= song_choice_array.split(' by ')
+    add_to_fav_list(song_choice)
+    
+
+    #** Try to play the song_choice music. 
+
+end # End of method 
+
+def add_to_fav_list(song_choice)
+    song_choice.each do |song|
+        song_id = Song.find_by(songname: song.split(' by ').first).id
+        fav_song_test = Favsong.new(user_id: @user.id, song_id: song_id)
+        binding.pry
+    end 
+    
+    puts "You have added your songs successfully!"
+    
+       
+    
+    # Adds the song_choice to the favourite list.
+    # songs.each do ||
+
+end # End of method 
+
+
+
+
+
+
     
 def show_favrouite_songs
       fav_songs = fav_songs_instances 
