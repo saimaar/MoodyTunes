@@ -12,3 +12,5 @@ gem "faker"
 gem "colorize", "~> 0.8.1"
 gem 'tty-prompt'
 gem "rest-client", "~> 2.1"
+gem "lolcat"
+gem 'tty-font'
