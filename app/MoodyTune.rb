@@ -115,6 +115,9 @@ class MoodyTune
     end
     display_songs_and_choose(matching_songnames_artists)
 end  # End of ask_mood_and_show_songs
+
+
+
 #----------------------------Print Fav songs-------------------------------------#
 def print_fav_songs
   puts 'Here are your favourite songs:'.colorize(:green)
@@ -144,13 +147,13 @@ end # End of method
 #----------------------Show fav song--------------------------------#
 
 def show_favrouite_songs
+  
       fav_songs = fav_songs_instances
-
       system 'echo Would you like to see your favourite songs? | lolcat -a -d 10'
       input = gets.chomp
       sleep(1)
       clear_screen
-      if input.downcase == 'yes' # and fav_songs is empty, puts 'no fav songs.'
+      if input.downcase == 'yes'
         sleep(1)
         # If favrouite is empty , puts sorry message.
          if fav_songs.empty?
@@ -164,6 +167,7 @@ def show_favrouite_songs
 
           puts 'Here are your favourite songs:'.colorize(:green)
           fav_songs.each_with_index do |favsong, i|
+            # We have the fav_song instances, so we do favsong.song.songname to obtain the songname, as well as the artist. 
             puts " #{i + 1}. #{favsong.song.songname.colorize(:red)} by #{favsong.song.artist}"
             sleep(0.5)
           end # loop ends
