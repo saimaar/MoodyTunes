@@ -14,3 +14,5 @@ gem 'tty-prompt'
 gem "rest-client", "~> 2.1"
 gem "lolcat"
 gem 'tty-font'
+gem 'figlet'
+gem 'pastel'

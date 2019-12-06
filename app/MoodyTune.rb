@@ -3,12 +3,14 @@ require "tty-prompt"
 require 'colorize'
 require 'colorized_string'
 require 'tty-font'
+require 'figlet'
 class MoodyTune
     attr_reader :user
     attr_accessor :prompt
 
+
     def initialize()
-      @prompt = TTY::Prompt.new
+      @prompt = TTY::Prompt.new(symbols: {marker: '⬢'})
 
   # This is just reading @user in this class.
   # here will be your CLI!
@@ -17,30 +19,30 @@ class MoodyTune
 #---------------------------RUN METHOD --------------------------------------#
 #begin and rescue method is preventing any ruby exceptions
   def run
-    # begin
+    begin
     #pid = fork{ exec "killall", "afplay" }
       welcome
       show_favrouite_songs
-    # rescue
-      # update_list
-    # end
+    rescue
+      update_list
+    end
   end
 #------------------------PRIVATE----------------------------------------------#
   private # Only getting called inside this class.
 #------------------------Welcome_media----------------------------------------------#
   def welcome_media
     puts "
- ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄   ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄
-▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌ ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
-▐░▌░▌   ▐░▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌ ▀▀▀▀█░█▀▀▀▀ ▐░▌       ▐░▌▐░▌░▌     ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀
-▐░▌▐░▌ ▐░▌▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌     ▐░▌       ▐░▌▐░▌▐░▌    ▐░▌▐░▌          ▐░▌
-▐░▌ ▐░▐░▌ ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░▌       ▐░▌▐░▌ ▐░▌   ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄
-▐░▌  ▐░▌  ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░▌       ▐░▌▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
-▐░▌   ▀   ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌ ▀▀▀▀█░█▀▀▀▀      ▐░▌     ▐░▌       ▐░▌▐░▌   ▐░▌ ▐░▌▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌
-▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌          ▐░▌     ▐░▌       ▐░▌▐░▌    ▐░▌▐░▌▐░▌                    ▐░▌
-▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌     ▐░▌          ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░▌     ▐░▐░▌▐░█▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄█░▌
-▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌      ▐░▌          ▐░▌     ▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
- ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀        ▀            ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ ".colorize(:red)
+                                         ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄   ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄
+                                        ▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌ ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+                                        ▐░▌░▌   ▐░▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌ ▀▀▀▀█░█▀▀▀▀ ▐░▌       ▐░▌▐░▌░▌     ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀
+                                        ▐░▌▐░▌ ▐░▌▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌     ▐░▌       ▐░▌▐░▌▐░▌    ▐░▌▐░▌          ▐░▌
+                                        ▐░▌ ▐░▐░▌ ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░▌       ▐░▌▐░▌ ▐░▌   ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄
+                                        ▐░▌  ▐░▌  ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░▌       ▐░▌▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+                                        ▐░▌   ▀   ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌ ▀▀▀▀█░█▀▀▀▀      ▐░▌     ▐░▌       ▐░▌▐░▌   ▐░▌ ▐░▌▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌
+                                        ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌          ▐░▌     ▐░▌       ▐░▌▐░▌    ▐░▌▐░▌▐░▌                    ▐░▌
+                                        ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌     ▐░▌          ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░▌     ▐░▐░▌▐░█▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄█░▌
+                                        ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌      ▐░▌          ▐░▌     ▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+                                         ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀        ▀            ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ ".colorize(:red)
   end
 
 #------------------------Welcome Message ---------------------------------------
@@ -50,13 +52,13 @@ class MoodyTune
   end
 
   def welcome
-      welcome_promp = TTY::Prompt.new
+      welcome_promp = TTY::Prompt.new(symbols: {marker: '⬢'})
       system "clear"
       welcome_media
       system "echo Welcome to MoodyTune!!! | lolcat -a -d 10"
       system "echo Full of music that will fit your mood. | lolcat -a -d 10"
       sleep(1)
-      login_choice = welcome_promp.select("Login or change username:", ["Sign Up / Login","Change Username"])
+      login_choice = welcome_promp.select("Login or change username:", ["Sign Up / Login","Change Username"], active_color: :red, help_color: :red)
       if login_choice == "Sign Up / Login"
               login
       else
@@ -102,7 +104,7 @@ class MoodyTune
 #--------------------------------Ask For Mood choice --------------------------#
   def ask_mood_and_show_songs
     moods = ['Happy', 'Sad', 'Excited', 'Chill', 'Romantic']
-    mood_choice = prompt.select("What is your mood today?",moods)
+    mood_choice = prompt.select("What is your mood today?",moods, active_color: :red, help_color: :red)
     matching_songs = Song.all.select do |each_song|
            each_song.mood.downcase == mood_choice.downcase
      end
@@ -113,14 +115,24 @@ class MoodyTune
     end
     display_songs_and_choose(matching_songnames_artists)
 end  # End of ask_mood_and_show_songs
+#----------------------------Print Fav songs-------------------------------------#
+def print_fav_songs
+  puts 'Here are your favourite songs:'.colorize(:green)
+  favourites = fav_songs_instances.each_with_index do |favsong, i|
+    puts "#{i + 1}. #{favsong.song.songname.colorize(:red)} by #{favsong.song.artist} "
+    sleep(0.2)
+  end # loop ends
+end
 
 
+#---------------------------------Display and choose-------------------------------#
 def display_songs_and_choose(songs)
+  choose_prompt = TTY::Prompt.new(symbols: {marker: '⬢'})
   sleep(1)
   clear_screen
-  song_choices = prompt.multi_select("Here are the songs matching your mood, please choose songs:",songs)
+  song_choices = choose_prompt.multi_select("Here are the songs matching your mood, please choose songs:",songs, active_color: :red, help_color: :red)
   clear_screen
-  song_to_play = prompt.select("Which one do you want to listen to? ", song_choices)
+  song_to_play = choose_prompt.select("Which one do you want to listen to? ", song_choices, active_color: :red, help_color: :red)
   clear_screen
   play_music(song_to_play)
   add_to_fav_list(song_to_play)
@@ -129,48 +141,7 @@ def display_songs_and_choose(songs)
   update_list
   system "clear"
 end # End of method
-
-def add_to_fav_list(song_to_play)
-    # Need to only match the one the user listened to.
-    # Loop through songs, find it by the song that the user listened to.
-    # And then created an favsong instance by user_id and song_id.
-  song_to_play = song_to_play.split(' by ') # To seperate songname and artist.
-  song_to_play = song_to_play.first.split('!') # To convert it into an array in order to use each.
-  prompt_yes_no = prompt.select("Do you want to add the song to favourite list?", ["Yes", "No"])
-    if prompt_yes_no.downcase == 'yes'.downcase
-        # sleep(1)
-        # system "clear"
-        song_to_play.each do |song|
-          song_id = Song.find_by(songname:song_to_play).id
-              Favsong.create(user_id: @user.id, song_id: song_id)
-
-          end
-
-      print_fav_songs
-      sleep(3)
-    else
-
-          sleep(3)
-          clear_screen
-          update_list
-          print_fav_songs
-    end
-
-    system "echo You have added your songs successfully! | lolcat -a -d 10"
-    # print_fav_songs
-
-end # End of method
-
-def prompt_yes_no
-  prompt_yes_no = prompt.select("Do you want to add the song to favourite list?", ["Yes", "No"])
-    if prompt_yes_no.downcase == 'yes'.downcase
-      add_to_fav_list
-      print_fav_songs
-    else
-
-    end
-
-end
+#----------------------Show fav song--------------------------------#
 
 def show_favrouite_songs
       fav_songs = fav_songs_instances
@@ -209,7 +180,32 @@ def show_favrouite_songs
 end
 
 
+#---------------------------------Adds to Favorite list---------------------------------
+def add_to_fav_list(song_to_play)
+    # Need to only match the one the user listened to.
+    # Loop through songs, find it by the song that the user listened to.
+    # And then created an favsong instance by user_id and song_id.
+  song_to_play = song_to_play.split(' by ') # To seperate songname and artist.
+  song_to_play = song_to_play.first.split('!') # To convert it into an array in order to use each.
+  prompt_yes_no = prompt.select("Do you want to add the song to favourite list?", ["Yes", "No"], active_color: :red, help_color: :red)
+    if prompt_yes_no.downcase == 'yes'.downcase
+        song_to_play.each do |song|
+          song_id = Song.find_by(songname:song_to_play).id
+              Favsong.create(user_id: @user.id, song_id: song_id)
+          end
+      print_fav_songs
+      sleep(2)
+    else
+          sleep(2)
+          clear_screen
+          update_list
+          print_fav_songs
+    end
+    system "echo You have added your songs successfully! | lolcat -a -d 10"
+end # End of method
 
+
+#------------------------------PLAY Music -------------------------------#
 def play_music(song)
   # Takes in user's choice of music to be played.
   pastel = Pastel.new
@@ -241,10 +237,10 @@ def play_music(song)
 end
 end
 
-
+#------------------------------DELETE SONG --------------------------------------------------------------#
 def delete_song
-  delete_prompt = TTY::Prompt.new
-  selected_song_idx = prompt.select('Select a song to delete. Scroll down to see the whole list!') do |song_list|
+  delete_prompt = TTY::Prompt.new(symbols: {marker: '⬢'})
+  selected_song_idx = delete_prompt.select('Select a song to delete. Scroll down to see the whole list!') do |song_list|
     song_list.enum '.'
     fav_songs_instances.each_with_index do |fav_song, i|
       song_list.choice fav_song.song.songname, i
@@ -254,10 +250,12 @@ def delete_song
   Favsong.delete(selected_id)
 end # end of delete method
 
+#--------------------------UPDATE LIST OF SONDS --------------------------------------------------------
+
 def update_list
   begin
-    add_delete_prompt = TTY::Prompt.new
-    update_choice = add_delete_prompt.select('What do you want to do?', ['Add Songs', 'Delete Songs','Update Username','Exit'])
+    add_delete_prompt = TTY::Prompt.new(symbols: {marker: '⬢'})
+    update_choice = add_delete_prompt.select('What do you want to do?', ['Add Songs', 'Delete Songs','Update Username','Exit'], active_color: :red, help_color: :red)
     sleep(2)
     clear_screen
 
@@ -265,7 +263,7 @@ def update_list
     # welcome_media
     if update_choice.downcase == 'Add Songs'.downcase
       ask_mood_and_show_songs
-      sleep(3)
+      sleep(2)
       clear_screen
       # welcome_media
       print_fav_songs
@@ -273,7 +271,7 @@ def update_list
     elsif update_choice.downcase == 'Delete Songs'.downcase
       delete_song
       system 'echo Your Song has been deleted successfully!! | lolcat -a -d 10'
-      sleep(3)
+      sleep(2)
       clear_screen
       # welcome_media
       print_fav_songs
@@ -286,23 +284,10 @@ def update_list
 
     elsif update_choice.downcase == "exit".downcase
       system "clear"
-      puts "GOOD BYE!"
-      sleep(2)
+      ByeByeMan.go
       exit!
     end
   rescue
     update_list
   end
 end
-
-def print_fav_songs
-  puts 'Here are your favourite songs:'.colorize(:green)
-  favourites = fav_songs_instances.each_with_index do |favsong, i|
-    puts "#{i + 1}. #{favsong.song.songname.colorize(:red)} by #{favsong.song.artist} "
-    sleep(0.2)
-  end # loop ends
-end
-
-
-
-# end # end of moody class

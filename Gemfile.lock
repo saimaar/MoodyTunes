@@ -21,6 +21,7 @@ GEM
     equatable (0.6.1)
     faker (2.8.0)
       i18n (>= 1.6, < 1.8)
+    figlet (1.1.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -93,7 +94,9 @@ DEPENDENCIES
   activerecord (~> 5.2)
   colorize (~> 0.8.1)
   faker
+  figlet
   lolcat
+  pastel
   pry
   require_all
   rest-client (~> 2.1)
