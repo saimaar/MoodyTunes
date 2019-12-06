@@ -103,7 +103,7 @@ class MoodyTune
   end
 #--------------------------------Ask For Mood choice --------------------------#
   def ask_mood_and_show_songs
-    moods = ['Happy', 'Sad', 'Excited', 'Chill', 'Romantic']
+    moods = ['Happy', 'Sad', 'Excited', 'Chill']
     mood_choice = prompt.select("What is your mood today?",moods, active_color: :red, help_color: :red)
     matching_songs = Song.all.select do |each_song|
            each_song.mood.downcase == mood_choice.downcase
@@ -179,7 +179,6 @@ def show_favrouite_songs
     end
 end
 
-
 #---------------------------------Adds to Favorite list---------------------------------
 def add_to_fav_list(song_to_play)
     # Need to only match the one the user listened to.
@@ -192,18 +191,22 @@ def add_to_fav_list(song_to_play)
         song_to_play.each do |song|
           song_id = Song.find_by(songname:song_to_play).id
               Favsong.create(user_id: @user.id, song_id: song_id)
+
           end
+      clear_screen
       print_fav_songs
-      sleep(2)
+      sleep(4)
+
     else
           sleep(2)
           clear_screen
           update_list
           print_fav_songs
+
     end
+    sleep(2)
     system "echo You have added your songs successfully! | lolcat -a -d 10"
 end # End of method
-
 
 #------------------------------PLAY Music -------------------------------#
 def play_music(song)
@@ -232,8 +235,8 @@ def play_music(song)
                         end
   # Get the duration attribute of the song and convert it to int.
   song_duration = song_choice_instance.duration.to_i
-  sleep(15)
-     pid = fork{ exec "killall", "afplay" }
+  sleep_time = song_duration - 5 
+  sleep(sleep_time)
 end
 end
 
@@ -280,10 +283,10 @@ def update_list
     elsif update_choice.downcase == 'Update Username'.downcase
 
               update_username
-
-
+              
     elsif update_choice.downcase == "exit".downcase
       system "clear"
+      pid = fork{ exec 'afplay', "musics/#{"GoodBye"}.mp3"}
       ByeByeMan.go
       exit!
     end
@@ -291,3 +294,5 @@ def update_list
     update_list
   end
 end
+
+
