@@ -19,8 +19,8 @@ class MoodyTune
 #---------------------------RUN METHOD --------------------------------------#
 #begin and rescue method is preventing any ruby exceptions
   def run
-    begin
-    #pid = fork{ exec "killall", "afplay" }
+     begin
+    pid = fork{ exec "killall", "afplay" }
       welcome
       show_favrouite_songs
     rescue
@@ -35,7 +35,7 @@ class MoodyTune
 #   puts 'ffff'
 #   pid = fork{ exec 'afplay', "musics/#{"Welcome"}.mp3"}
 #   Welcome_media.go
-# end 
+# end
 
 
 
@@ -157,7 +157,7 @@ end # End of method
 #----------------------Show fav song--------------------------------#
 
 def show_favrouite_songs
-  
+
       fav_songs = fav_songs_instances
       system 'echo Would you like to see your favourite songs? | lolcat -a -d 10'
       input = gets.chomp
@@ -177,7 +177,7 @@ def show_favrouite_songs
 
           puts 'Here are your favourite songs:'.colorize(:green)
           fav_songs.each_with_index do |favsong, i|
-            # We have the fav_song instances, so we do favsong.song.songname to obtain the songname, as well as the artist. 
+            # We have the fav_song instances, so we do favsong.song.songname to obtain the songname, as well as the artist.
             puts " #{i + 1}. #{favsong.song.songname.colorize(:red)} by #{favsong.song.artist}"
             sleep(0.5)
           end # loop ends
@@ -249,7 +249,7 @@ def play_music(song)
                         end
   # Get the duration attribute of the song and convert it to int.
   song_duration = song_choice_instance.duration.to_i
-  sleep_time = song_duration - 5 
+  sleep_time = song_duration - 5
   sleep(sleep_time)
 end
 end
@@ -297,7 +297,7 @@ def update_list
     elsif update_choice.downcase == 'Update Username'.downcase
 
               update_username
-              
+
     elsif update_choice.downcase == "exit".downcase
       system "clear"
       pid = fork{ exec 'afplay', "musics/#{"GoodBye"}.mp3"}
@@ -308,5 +308,3 @@ def update_list
     update_list
   end
 end
-
-
