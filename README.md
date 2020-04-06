@@ -1,4 +1,4 @@
-## Process
+<h1 align="center">MoodyTunes</h1>
 
 ### Setup
 1. Create Gemfile + run `bundle`
