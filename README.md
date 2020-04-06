@@ -32,7 +32,7 @@ This web app makes use of the following:
 - Colorize - Gem for colorizing text using ANSI escape sequences
 
 
-## Fun Gems For Your Projects
+## Fun Gems 
 - `faker` - randomly generated seed data fun
 - `colorize` - colored text output in your terminal
 - `lolcat` - enabling rainbow text coloring
