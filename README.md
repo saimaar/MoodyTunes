@@ -1,5 +1,11 @@
 <h1 align="center">MoodyTunes :notes:</h1>
-<h4 align="center"> A Ruby CLI Application inspired by Spotify Music App.</h4>
+<h3 align="center"> A Ruby CLI Application inspired by Spotify Music App.</h3>
+<h4 align="center">
+  <sub>Built by
+  <a href="https://github.com/saimaar">Saima Rahman</a> and
+  <a href="https://github.com/rexy91"> Rex Ye</a>
+  </sub>
+</h4>
 
 
 ### Setup
