@@ -32,10 +32,18 @@ This web app makes use of the following:
 - Colorize - Gem for colorizing text using ANSI escape sequences
 
 
-## Fun Gems 
+## Fun Gems ♥
 - `faker` - randomly generated seed data fun
 - `colorize` - colored text output in your terminal
 - `lolcat` - enabling rainbow text coloring
 - `tty-prompt` - nice interface for prompting for user input
 - `figlet` - different positioning properties and color properties with the help of other gems
+
+## Setup
+- Clone this repo to your local machine `git clone <this-repo-url>`
+- run cd `MoodyTunes`, to access the project
+- run `bundle install` to install required dependencies
+- run `rake db:migrate` to create tables into the database
+- run `rake db:seed` to create seed data
+- run `ruby bin/run.rb` to run the app
 
