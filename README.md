@@ -10,20 +10,27 @@
   <img style="margin-left:10%" width="90%" height="60%" src="ezgif.com-video-to-gif.gif">
 </p>
 
+In this project we used knowledge of plain <code>Ruby</code>, <code> Active Record Associations </code>, and database management.
+
+## Features 
+- Animated Welcome, with Music Audio in the background
+- User can Sign up/Sign.
+- Includes prompts for Users to:
+  - Add Music to their playlist.
+  - Select a Mood and play songs.
+  - Remove song from the playlist 
+- User can update username.
+- User can view their playlist
 
 
-### Setup
-1. Create Gemfile + run `bundle`
-2. Create migrations: run `rake db:create_migration` and add the syntax you need (e.g. NAME=create_users)
-3. Migrate: run `rake db: migrate`
-* **REMEMBER** never ever ever change anything in schema.
-4. Go to .bin/run.rb and change the name of the app on line 3
-5. Go to ./app/models and change the names of the files (e.g. User.rb <- singular) and the class names inside
-6. Set up associations in classes (belongs_to / has_many / has_many through:)
-7. Create seed data + run `rake db: seed`
-* remember: seeding does not give you any output so no news on your console == good news
-8. Check if you've seeded correctly: run `rake c` and check what's the last instance of any of your class 
-9. Go to ./app/yourAppName.rb and change that file's name and whatever is inside (the class name should correspond to what you wrote in .bin/run.rb on line 3)
+## Tech Stack
+This web app makes use of the following:
+- Ruby [2.6.1]
+- SQLite3 [~> 1.4] - Database
+- Sinatra-activerecord - Gem that extends Sinatra with ActiveRecord helper methods and Rake tasks
+- TTY::Prompt - Gem that provides easy option selection
+- Colorize - Gem for colorizing text using ANSI escape sequences
+
 
 ## Fun Gems For Your Projects
 - `faker` - randomly generated seed data fun
