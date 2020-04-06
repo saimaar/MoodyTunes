@@ -1,4 +1,6 @@
 <h1 align="center">MoodyTunes :notes:</h1>
+<h4 align="center"> A Ruby CLI Application inspired by Spotify Music App.</h4>
+
 
 ### Setup
 1. Create Gemfile + run `bundle`
