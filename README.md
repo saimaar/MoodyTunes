@@ -1,4 +1,4 @@
-<h1 align="center">MoodyTunes</h1>
+<h1 align="center">MoodyTunes :notes:</h1>
 
 ### Setup
 1. Create Gemfile + run `bundle`
