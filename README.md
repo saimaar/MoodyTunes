@@ -10,7 +10,7 @@
   <img style="margin-left:10%" width="90%" height="60%" src="ezgif.com-crop.gif">
 </p>
 
-In this project we used knowledge of plain <code>Ruby</code>, <code> Active Record Associations </code>, and database management.
+This project was a part of pair-programming experince at Flatiron School. In this project we used knowledge of plain <code>Ruby</code>, <code> Active Record Associations </code>, and database management.
 
 ## Features
 - Animated Welcome, with Music Audio in the background
