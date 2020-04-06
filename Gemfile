@@ -16,3 +16,4 @@ gem "lolcat"
 gem 'tty-font'
 gem 'figlet'
 gem 'pastel'
+gem "rack", ">= 2.0.8"
