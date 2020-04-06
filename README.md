@@ -6,6 +6,10 @@
   <a href="https://github.com/rexy91"> Rex Ye</a>
   </sub>
 </h4>
+<p align="center">
+  <img style="margin-left:10%" width="90%" height="60%" src="ezgif.com-video-to-gif.gif">
+</p>
+
 
 
 ### Setup
