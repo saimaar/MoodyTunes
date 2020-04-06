@@ -7,18 +7,18 @@
   </sub>
 </h4>
 <p align="center">
-  <img style="margin-left:10%" width="90%" height="60%" src="ezgif.com-video-to-gif.gif">
+  <img style="margin-left:10%" width="90%" height="60%" src="ezgif.com-crop.gif">
 </p>
 
 In this project we used knowledge of plain <code>Ruby</code>, <code> Active Record Associations </code>, and database management.
 
-## Features 
+## Features
 - Animated Welcome, with Music Audio in the background
 - User can Sign up/Sign.
 - Includes prompts for Users to:
   - Add Music to their playlist.
   - Select a Mood and play songs.
-  - Remove song from the playlist 
+  - Remove song from the playlist
 - User can update username.
 - User can view their playlist
 
@@ -43,4 +43,3 @@ This web app makes use of the following:
 - run `rake db:migrate` to create tables into the database
 - run `rake db:seed` to create seed data
 - run `ruby bin/run.rb` to run the app
-
